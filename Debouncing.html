@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input onkeyup="f()" />
+  </body>
+  <script>
+    let counter=0;
+    function cal(){
+      console.log("fetch", counter++);
+    };
+
+    function myDebounce(fun, t) {
+      let timer;
+      return function (...args) {
+        if (timer) 
+            clearTimeout(timer);
+        timer=setTimeout(() => {
+          fun();
+        }, t);
+      };
+    }
+
+    const f = myDebounce(cal, 1000);
+  </script>
+</html>

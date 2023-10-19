@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button onclick="f()">Button</button>
+  </body>
+  <script>
+    let counter=0;
+    function cal(){
+      console.log("User Click");
+    };
+
+    function myThrottle(fun, t) {
+        let prev=0;
+      return function (...args) {
+        let now = new Date().getTime(); 
+        if(now - prev> t){ 
+          prev = now;
+          return fun(...args);  
+        }
+      };
+    }
+
+    const f = myThrottle(cal, 2000);
+  </script>
+</html>
